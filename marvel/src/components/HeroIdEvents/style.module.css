@@ -1,0 +1,23 @@
+.card{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax( 460px, 1fr));
+    gap: 40px;
+}
+
+.card .img img{
+    width: 100%;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info p:first-child{
+    font-size: 70px;
+}
+
+.info:nth-child(1){
+    font-size: 30px;
+}

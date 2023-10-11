@@ -1,0 +1,10 @@
+.container > P {
+    font-size: 50px;
+    margin: 20px;
+}
+
+.eventsList{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}

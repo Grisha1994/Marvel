@@ -1,0 +1,53 @@
+.card{
+    background-color:red;
+    position: relative;
+    margin-top: 3rem;
+    padding: 4px;
+    transition: 0.2s;
+}
+
+.card img{
+    /* object-fit: contain; */
+    height: 300px;
+    width: 100%; 
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.title{
+    text-align: center;
+    padding: 1rem;
+    font-size: 17px;
+}
+
+.title p{
+    text-align: center;
+    color: white;
+    font-size: 25px;
+}
+
+.card::after,
+.card::before{
+    content: '';
+    position: absolute;
+    background: red;
+    z-index: -1;
+}
+
+.card::before{
+    bottom: -2em;
+    left: 0;
+    width: 75%;
+    height: 3em;
+}
+
+.card::after{
+    bottom:  -2em;
+    right: 0.9em;
+    width: 41%;
+    height: 5em;
+    transform: rotate(-38deg);
+    box-sizing: 1rem;
+}

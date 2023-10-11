@@ -1,0 +1,50 @@
+.container{
+    margin: 20px auto;
+
+        background-image: radial-gradient(
+            ellipse, 
+            rgba(0, 0, 0, 0.773) 60%,
+            rgb(0, 0, 0) 70%,
+            rgb(0, 0, 0) 100%),
+            url(../media/The_Marvel_Universe.webp);
+
+}
+.hero_box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: justify;
+    color: white;
+    width: 100%;
+    height: 600px;
+}
+
+.right_box{
+    flex-basis: 20%;
+}
+
+.hero_box img{
+    width: 300px;
+    height: 400px;
+    border: 1px solid white;
+    box-shadow: 0 5px 5px 5px rgba(255,255,255,0.2);
+    transition: 0.5s;
+    object-fit: cover;
+    transform:rotate(-20deg);
+}
+
+.hero_box img:hover{
+    transform:rotate(0deg);
+}
+
+.left_box{
+    flex-basis: 50%;
+}
+
+.left_box p:first-child{
+    font-size: 70px;
+}
+
+.left_box:nth-child(2){
+    font-size: 30px;
+}
