@@ -16,7 +16,7 @@ export default function HeroIdEventsContainer() {
     }, [id, dispatch])
 
     const seriesList = useSelector(({heroIdSeries}) => heroIdSeries);
-    console.log('heroIdSeries', seriesList);
+    // console.log('heroIdSeries', seriesList);
     const status = useSelector(({heroIdSeries}) => heroIdSeries.status);
 
   return (

@@ -4,85 +4,53 @@
 // import s from './style.module.css'
 // import Hero from '../Hero';
 // import Search from '../Search';
-// import SearchResults from '../SearchResults';
+// import { useLocalStorage } from '../../store/hooks/useLocalStorage';
 
 // export default function HeroContainer() {
 
-//     const heroesList = useSelector(({heroes}) => heroes);
-//     // console.log(heroesList);
+//     const heroesList = useSelector(({heroes}) => heroes.list);
+//     // console.log('heroesList', heroesList);
 //     const status = useSelector(({heroes}) => heroes.status);
 
-//     const [ results, setResults] = useState([]);
+//     const [ filterHero, setFilterHero ] = useState('');
+//     // console.log("filterHero", filterHero);
 
-//     const [ listId, setId] = useState();
-//     // console.log('id передан', listId);
+//     const [ itemId, setItemId ] = useLocalStorage('itemId', '');
+//     // console.log('id peredan', itemId);
 
-//     const find = listId === undefined ? '' : heroesList.list.filter(item => listId === item.id);
-//     // console.log(find);
-    
-//     const [ pressEnter, setPressEnter] = useState();
+//     const [ resultsList, setResultsList] = useLocalStorage('resultsList', []);
 
-//     const onKeyDown = e =>{
-//       // обработайте нажатие клавиши. 
-//         if(e.keyCode === 13){
-//           const pressEnter = e.key;
-//           setPressEnter(pressEnter);
-//           setInput('');
-//           console.log(pressEnter);
-//         } 
-//       }
-//       const [ input, setInput ] = useState("");
-//       console.log('hel',input );
+//     const list = itemId === '' 
+//     ? (resultsList === '' ? '' : resultsList.map((el) => <Hero key={el.id} {...el} />))
+//     : heroesList.filter((el) => Number(itemId) === el.id).map((el) => <Hero key={el.id} {...el} />);
+//     // console.log("resultsList", resultsList);
+//     // console.log("list", list);
 
-//       const handlerChange = (value) => {
-//         setInput(value)
-//         heroData(value)
-//         onKeyDown('')
-//         // setPressEnter('');
-//       }
-      
-//       const onClick = () =>{
-//         setInput('');
-//         heroData('');
-//       }
-
-//       const heroData = (value) => {
-//         const results = heroesList.list.filter((hero) => {
-//           return value && hero && hero.name && hero.name.toLowerCase().includes(value)
-//         });
-//         console.log('results', results);
-//         setResults(results);
-//       };
 
 //   return (
 //     <div>
-//       <Search heroesList={heroesList} setResults={setResults} onKeyDown={onKeyDown} input={input} handlerChange={handlerChange} heroData={heroData}/>
-//       <SearchResults results={results} setId={setId} pressEnter={pressEnter} onClick={onClick} onKeyDown={onKeyDown}/>
+//       <Search setFilterHero={setFilterHero} setResultsList={setResultsList} setItemId={setItemId} />
 //       <Container className={s.container}>
 //           {
-//               status !== 'ready' ? '' : 
-//                 ((listId !== undefined 
-//                   ? (find.map(item => <Hero key={item.id} {...item}/>)) 
-//                   : pressEnter === 'Enter' ?
-//                     results.map(item => <Hero key={item.id} {...item}/>)
-//                   : (heroesList.list.map(item => <Hero key={item.id} {...item}/>))) 
-
-//                 )
+//             status !== 'ready' ? '' : 
+//             (filterHero === "Enter" || list.length !== 0) ?
+//             list
+//             :heroesList.map((el) => <Hero key={el.id} {...el} />)
+     
 //           }
 //       </Container>
 //     </div>
 //   )
 // }
 
-
-
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import Container from '../UI/Container';
 import s from './style.module.css'
 import Hero from '../Hero';
 import Search from '../Search';
 import { useLocalStorage } from '../../store/hooks/useLocalStorage';
+
 
 export default function HeroContainer() {
 
@@ -94,24 +62,26 @@ export default function HeroContainer() {
     // console.log("filterHero", filterHero);
 
     const [ itemId, setItemId ] = useLocalStorage('itemId', '');
+    const [ nameId, setNameId ] = useLocalStorage('nameId', '');
     // console.log('id peredan', itemId);
+    console.log('name peredan', nameId);
 
     const [ resultsList, setResultsList] = useLocalStorage('resultsList', []);
 
-    const list = itemId === '' 
+    const list = nameId === '' 
     ? (resultsList === '' ? '' : resultsList.map((el) => <Hero key={el.id} {...el} />))
-    : heroesList.filter((el) => Number(itemId) === el.id).map((el) => <Hero key={el.id} {...el} />);
+    : resultsList.filter((el) => String(nameId) === el.name).map((el) => <Hero key={el.id} {...el} />);
     // console.log("resultsList", resultsList);
     // console.log("list", list);
 
 
   return (
     <div>
-      <Search setFilterHero={setFilterHero} setResultsList={setResultsList} setItemId={setItemId} />
+      <Search setFilterHero={setFilterHero} setResultsList={setResultsList} setItemId={setItemId} setNameId={setNameId} nameId={nameId}/>
       <Container className={s.container}>
           {
             status !== 'ready' ? '' : 
-            (filterHero === "Enter" || list.length !== 0) ?
+            (filterHero === "Enter" || list.length !== 0 ) ?
             list
             :heroesList.map((el) => <Hero key={el.id} {...el} />)
      

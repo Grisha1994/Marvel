@@ -8,7 +8,7 @@ import Search from '../Search';
 
 export default function ComicsContainer() {
 
-    const comicsList = useSelector(({comics}) => comics.list);
+    const comicsList = useSelector(({comics}) => comics);
     console.log('comicsList', comicsList);
     const status = useSelector(({comics}) => comics.status);
 
