@@ -9,6 +9,8 @@ import HeroContainer from '../HeroContainer';
 import NavMenu from '../NavMenu';
 import ComicsContainer from '../ComicsContainer';
 import { fetchComics } from '../../store/slice/comicsSlise';
+import context from '../../store/context/context';
+import { useLocalStorage } from '../../store/hooks/useLocalStorage';
 
 function App() {
 
@@ -19,18 +21,22 @@ function App() {
     dispatch(fetchComics());
   }, [dispatch])
 
+  const [ resultsHero, setResultsHero] = useLocalStorage('resultsHero', []);
+  console.log("App resultHero", resultsHero);
+
   return (
     <div className="App">
+      <context.Provider value={{setResultsHero}}>
+        <NavMenu/>
 
-      <NavMenu/>
+        <Routes>
+          <Route path='/' element={<Main/>} />
+          <Route path='/heroes' element={<HeroContainer/>} />
+          <Route path='/heroesId/:id' element={<HeroId resultsHero={resultsHero}/>} />
+          <Route path='/comics' element={<ComicsContainer/>} />
+        </Routes>
 
-      <Routes>
-        <Route path='/' element={<Main/>} />
-        <Route path='/heroes' element={<HeroContainer/>} />
-        <Route path='/heroesId/:id' element={<HeroId/>} />
-        <Route path='/comics' element={<ComicsContainer/>} />
-      </Routes>
-
+      </context.Provider>
     </div>
   );
 }

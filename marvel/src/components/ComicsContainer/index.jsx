@@ -2,13 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import Container from '../UI/Container';
 import s from './style.module.css'
-import Hero from '../Hero';
+// import Hero from '../Hero';
 import HeroIdComics from '../HeroIdComics';
 import Search from '../Search';
 
 export default function ComicsContainer() {
 
-    const comicsList = useSelector(({comics}) => comics);
+    const comicsList = useSelector(({comics}) => comics.list);
     console.log('comicsList', comicsList);
     const status = useSelector(({comics}) => comics.status);
 
