@@ -4,3 +4,29 @@
     grid-gap: 20px;
     padding-bottom: 100px;
 }
+
+.main{
+    display: flex;
+    gap: 20px;
+    /* height: 600px; */
+    overflow-x: auto;
+    padding-bottom: 100px;
+    overflow: hidden;
+}
+
+button{
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.wrapper_button{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: -340px;
+    max-width: 1560px;
+    margin: 0 auto;
+}
+

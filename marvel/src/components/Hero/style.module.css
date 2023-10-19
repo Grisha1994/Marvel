@@ -7,7 +7,7 @@
 }
 
 .card img{
-    /* object-fit: contain; */
+    /* object-fit: cover; */
     height: 300px;
     width: 100%; 
 }
@@ -44,6 +44,46 @@
 }
 
 .card::after{
+    bottom:  -2em;
+    right: 0.9em;
+    width: 41%;
+    height: 5em;
+    transform: rotate(-38deg);
+    box-sizing: 1rem;
+}
+
+.main{
+    /* height: 90%; */
+    width: 272px;
+    background-color:red;
+    position: relative;
+    padding: 4px;
+    transition: 0.2s;
+    flex-shrink: 0;
+}
+
+.main img{
+    /* object-fit: cover; */
+    height: 300px;
+    width: 100%; 
+  }
+
+.main::after,
+.main::before{
+    content: '';
+    position: absolute;
+    background: red;
+    z-index: -1;
+}
+
+.main::before{
+    bottom: -2em;
+    left: 0;
+    width: 75%;
+    height: 3em;
+}
+  
+  .main::after{
     bottom:  -2em;
     right: 0.9em;
     width: 41%;
