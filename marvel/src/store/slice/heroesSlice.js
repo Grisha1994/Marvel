@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 export const fetchHeroes = createAsyncThunk(
     'heroes/fetchHeroes',
     async (value, id) => {
-        console.log('value slice', value);
+        // console.log('value slice', value);
         // console.log('id slice', id);
         // const lettrs = value[0].toUpperCase();
         // console.log('lettrs slice', lettrs);

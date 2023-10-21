@@ -22,7 +22,7 @@ function App() {
   }, [dispatch])
 
   const [ resultsHero, setResultsHero] = useLocalStorage('resultsHero', []);
-  console.log("App resultHero", resultsHero);
+  // console.log("App resultHero", resultsHero);
 
   return (
     <div className="App">

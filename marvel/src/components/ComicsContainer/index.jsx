@@ -5,6 +5,7 @@ import s from './style.module.css'
 // import Hero from '../Hero';
 import HeroIdComics from '../HeroIdComics';
 import Search from '../Search';
+import {motion} from 'framer-motion'
 
 export default function ComicsContainer() {
 
@@ -12,14 +13,45 @@ export default function ComicsContainer() {
     console.log('comicsList', comicsList);
     const status = useSelector(({comics}) => comics.status);
 
+    const cardAnimation = {
+      hidden: {
+        x: 100,
+        rotate: -30,
+        opacity: 0,
+      },
+      visible: custom => ({
+        x: 0,
+        opacity: 1,
+        rotate: 0,
+        transition: { 
+          delay: custom * 0.2,
+          duration: 0.3
+        }
+      }),
+    }
+
   return (
         <Container >
-        <Search/>
-          <div className={s.container}>
+        
+          <div 
+            className={s.container}
+          >
             {
-              status !== 'ready' ? '' : 
-              comicsList.map((el) => <HeroIdComics key={el.id} {...el} />)
-      
+              status !== 'ready' ? '' :
+              (
+                comicsList.map((el, index) => 
+                <motion.div
+                  key={el.id}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{amount: 0.2, once: true}}
+                  custom={index + 1}
+                  variants={cardAnimation}
+                >
+                    <HeroIdComics key={el.id} {...el} />
+                </motion.div>
+                )
+              )
             }
           </div>
       </Container>

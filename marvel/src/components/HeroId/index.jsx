@@ -12,11 +12,11 @@ export default function HeroId({resultsHero}) {
   const { id } = useParams();
   const heroId = +id;
   const heroes = useSelector(({ heroes }) => heroes);
-  console.log("heroes", heroes);
+  // console.log("heroes", heroes);
 
   const hero = heroes.status === 'ready' ? ( heroes.list.find(item => heroId === item.id) === undefined 
   ? resultsHero.find(item => heroId === item.id) : heroes.list.find(item => heroId === item.id)) : '';
-  console.log("hero", hero);
+  // console.log("hero", hero);
 
   return (
     <Container>

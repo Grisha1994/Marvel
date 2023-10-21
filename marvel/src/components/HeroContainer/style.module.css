@@ -14,11 +14,17 @@
     overflow: hidden;
 }
 
-button{
+svg{
     cursor: pointer;
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    stroke: white;
+}
+
+svg:hover{
+    background: orange;
+    stroke: black;
 }
 
 .wrapper_button{
